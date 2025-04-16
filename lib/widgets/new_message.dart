@@ -26,8 +26,8 @@ class _NewMessageState extends State<NewMessage> {
     if (enteredMessage.isEmpty) {
       return;
     }
-    //FocusScope.of(context).unfocus();
-    //_messageController.clear();
+    FocusScope.of(context).unfocus();
+    _messageController.clear();
     final user = FirebaseAuth.instance.currentUser!;
     final userData =
         await FirebaseFirestore.instance
@@ -39,7 +39,7 @@ class _NewMessageState extends State<NewMessage> {
       'created': Timestamp.now(),
       'userId': user.uid,
       'username': userData.data()!['username'],
-      'userImage': userData.data()!['image_url'],
+      'userImage': userData.data()!['imageUrl'],
     });
   }
 
